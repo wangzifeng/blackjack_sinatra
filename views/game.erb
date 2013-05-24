@@ -1,3 +1,31 @@
 <h1>Game On!</h1>
-<%= @username %>
+
+<h3><%= session[:player_result] %></h3>
+
+<h6><%= session[:time] %></h6>
+
+<h6>Bet: <%= session[:ante]  %> coins </h6>
+
+<h2>Dealer</h2>
+<ul>
+<% session[:dealer].each do |card| %>
+  <li><%= card.to_s %></li>
+<% end %>
+</ul>
+
+<h2>Player</h2>
+<h6>Total <%= session[:player_total]  %> point </h6>
+<ul>
+<% session[:player].each do |card| %>
+  <li><%= card.to_s %></li>
+<% end %>
+</ul>
+
+<form action="/playerhand" method="post">
+  <input type="submit" name="hit" value="hit" class="btn">
+</form> 
+
+<form action="/stay" method="post">
+  <input type="submit" name="stay" value="stay" class="btn" >
+</form>
 
