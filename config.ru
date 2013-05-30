@@ -1,7 +1,2 @@
-require 'rubygems'
-require 'bundler'
-
-Bundler.require
-
-require './sinatra_blackjack.rb'
+require './sinatra_blackjack'
 run Sinatra::Application

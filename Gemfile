@@ -1,8 +1,4 @@
-source 'https://rubygems.org'
+source :rubygems
 
 gem 'sinatra'
-
-group :development do
-  gem 'foreman'
-  gem 'heroku'
-end
+gem 'thin'
