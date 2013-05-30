@@ -1,31 +1,68 @@
+    <%if @error %>
+      <div class="alert alert-error"><%=@error%></div>
+    <% end %>
+
+    <%if @sucess %>
+      <div class="alert alert-sucess"><%=@sucess%></div>
+    <% end %>
+
+<div id="game">
 <h1>Game On!</h1>
+<div class="well well-small">
+Current Bet: <%= session[:bet]  %>
+</div>
 
-<h3><%= session[:player_result] %></h3>
+<div class="well well-small">
+Player Balance: <%= session[:bank]  %>
+</div>
 
-<h6><%= session[:time] %></h6>
-
-<h6>Bet: <%= session[:ante]  %> coins </h6>
-
+<div id="table_dealer" class="well">
 <h2>Dealer</h2>
-<ul>
-<% session[:dealer].each do |card| %>
-  <li><%= card.to_s %></li>
+<h6>Total <%= cal(session[:dealer])  %> point </h6>
+<ul class="cardimage">
+
+<% session[:dealer].each_with_index do |card, index| %>
+  <% if index == 0%>
+    <li><img src="images/cards/cover.jpg"></li>
+  <% else %>
+    <li><%= showcard(card)%></li>
+  <% end %>
 <% end %>
 </ul>
 
+<% if @show_dealer_hit_or_stay %>
+<form action="/dealerturn" method="post">
+  <input type="submit" name="hit" value="hit" class="btn btn-large btn-sucess">
+</form>
+<% end %>
+
+</div>
+
+<div id="table_player" class="well">
 <h2>Player</h2>
-<h6>Total <%= session[:player_total]  %> point </h6>
-<ul>
+<h6>Total <%= cal(session[:player])  %> point </h6>
+
+
+<ul class="cardimage">
 <% session[:player].each do |card| %>
-  <li><%= card.to_s %></li>
+  <li><%= showcard(card) %></li>
 <% end %>
 </ul>
+</div>
+
+<% if @show_hit_or_stay %>
+
+<div class="button">
 
 <form action="/playerhand" method="post">
-  <input type="submit" name="hit" value="hit" class="btn">
+  <input id="player_hit" type="submit" name="hit" value="hit" class="btn btn-large btn-danger">
 </form> 
 
-<form action="/stay" method="post">
-  <input type="submit" name="stay" value="stay" class="btn" >
+<form action="/playerstay" method="post">
+  <input id="player_stay" type="submit" name="stay" value="stay" class="btn btn-large btn-success" >
 </form>
 
+</div>
+
+<% end %>
+</div>

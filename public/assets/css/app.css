@@ -1,0 +1,24 @@
+.cardimage {
+  list-style: none;
+}
+
+.cardimage li {
+  display: block;
+  float: left;
+  margin: 15px;
+}
+
+ul.cardimage  {
+  height: 300px;
+  display: block;
+}
+
+.button input{
+  float: left;
+  margin: 10px;
+}
+
+#table_player, #table_dealer {
+  background-color: green;
+  background-image: url(/images/bg6.jpg);
+}

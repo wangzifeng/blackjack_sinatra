@@ -1,0 +1,16 @@
+<div class="well well-small">
+Current Bet: <%= session[:bet]  %>
+</div>
+
+<div class="well well-small">
+Player Balance: <%= session[:bank]  %>
+</div>
+
+<p>Please enter your bet:</p>
+
+<form action="/bet" method="post">
+  <input type="text" name="bet_amount">
+  </br>
+  <input type="submit" value="submit" class="btn">
+</form>
+
