@@ -1,6 +1,5 @@
 # coding: utf-8
 require 'sinatra'
-require 'pry'
 
 before do
   @show_hit_or_stay = true
